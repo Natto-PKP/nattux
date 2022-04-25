@@ -1,0 +1,29 @@
+{
+  "root": true,
+
+  "ignorePatterns": ["jest.config.ts", "data/*"],
+
+  "overrides": [
+    {
+      "files": ["src/**/*.ts", "src/**/*.d.ts"],
+      "env": { "node": true },
+      "plugins": ["@typescript-eslint"],
+      "extends": ["airbnb-base", "airbnb-typescript/base"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": ["tsconfig.json"]
+      }
+    },
+    {
+      "files": ["tests/**/*.test.ts"],
+      "env": { "jest": true, "node": true },
+      "plugins": ["@typescript-eslint", "jest"],
+      "extends": ["airbnb-base", "airbnb-typescript/base", "plugin:jest/all"],
+      "rules": {
+        "jest/no-hooks": ["error", { "allow": ["beforeAll", "afterAll"] }]
+      }
+    }
+  ]
+}

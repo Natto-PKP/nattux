@@ -18,3 +18,4 @@
 - Création des views de base
 - Mise à jour du fichier endpoints.md
 - Création du fichier tables.md et journal.md
+- Création des functions utilitaires des tables

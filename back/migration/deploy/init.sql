@@ -20,7 +20,7 @@ CREATE TABLE "account" (
 CREATE TABLE "desk" (
   "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "background" TEXT,
-  "theme" TEXT,
+  "theme" TEXT NOT NULL DEFAULT 'default',
   "color" TEXT CHECK ( LENGTH("color") = 7 AND "color" ~ '^#[0-9a-fA-F]{6}$' ),
   "account_id" INTEGER NOT NULL UNIQUE REFERENCES "account"("id") ON DELETE CASCADE
 );
@@ -29,7 +29,7 @@ CREATE TABLE "desk" (
 CREATE TABLE "folder" (
   "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "name" NAME_TEXT NOT NULL,
-  "icon" TEXT,
+  "icon" TEXT NOT NULL DEFAULT 'default',
   "favorite" BOOLEAN NOT NULL DEFAULT false,
   "account_id" INTEGER NOT NULL REFERENCES "account"("id") ON DELETE CASCADE,
   "folder_id" INTEGER REFERENCES "folder"("id") ON DELETE CASCADE
@@ -39,8 +39,9 @@ CREATE TABLE "folder" (
 CREATE TABLE "file" (
   "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "name" NAME_TEXT NOT NULL,
-  "type" TEXT NOT NULL DEFAULT 'text' CHECK ( "type" ~ '(text|png|jpg|gif|markdown)' ),
+  "type" TEXT NOT NULL DEFAULT 'text' CHECK ( "type" ~ '(text|markdown)' ),
   "content" TEXT,
+  "favorite" BOOLEAN NOT NULL DEFAULT false,
   "account_id" INTEGER NOT NULL REFERENCES "account"("id") ON DELETE CASCADE,
   "folder_id" INTEGER REFERENCES "folder"("id") ON DELETE CASCADE
 );

@@ -14,24 +14,24 @@
 
 ## desk
 
-|   column   |  type   | default |            constraint            | examples |
-| :--------: | :-----: | :-----: | :------------------------------: | :------: |
-|     id     | integer |         |    PRIMARY - GENERATED ALWAYS    |          |
-| background |  text   |         |                                  |          |
-|   theme    |  text   |         |                                  |          |
-|   color    |  text   |         |                                  | #7D4A74  |
-| account_id | integer |         | NOT NULL - UNIQUE - REF(account) |          |
+|   column   |  type   |  default  |            constraint            | examples |
+| :--------: | :-----: | :-------: | :------------------------------: | :------: |
+|     id     | integer |           |    PRIMARY - GENERATED ALWAYS    |          |
+| background |  text   |           |                                  |          |
+|   theme    |  text   | 'default' |             NOT NULL             |          |
+|   color    |  text   |           |                                  | #7D4A74  |
+| account_id | integer |           | NOT NULL - UNIQUE - REF(account) |          |
 
 ## folder
 
-|   column   |       type       | default |         constraint         | examples |
-| :--------: | :--------------: | :-----: | :------------------------: | :------: |
-|     id     |     integer      |         | PRIMARY - GENERATED ALWAYS |          |
-|    name    | text (name_text) |         |          NOT NULL          |          |
-|    icon    |       text       |         |                            |          |
-|  favorite  |     boolean      |  false  |          NOT NULL          |          |
-| account_id |     integer      |         |  NOT NULL - REF(account)   |          |
-| folder_id  |     integer      |         |        REF(folder)         |          |
+|   column   |       type       |  default  |         constraint         | examples |
+| :--------: | :--------------: | :-------: | :------------------------: | :------: |
+|     id     |     integer      |           | PRIMARY - GENERATED ALWAYS |          |
+|    name    | text (name_text) |           |          NOT NULL          |          |
+|    icon    |       text       | 'default' |          NOT NULL          |          |
+|  favorite  |     boolean      |   false   |          NOT NULL          |          |
+| account_id |     integer      |           |  NOT NULL - REF(account)   |          |
+| folder_id  |     integer      |           |        REF(folder)         |          |
 
 ## file
 
@@ -41,5 +41,6 @@
 |    name    | text (name_text) |         |          NOT NULL          |            |
 |    type    |       text       | 'text'  |          NOT NULL          | 'markdown' |
 |  content   |       text       |         |                            |            |
+|  favorite  |     boolean      |  false  |          NOT NULL          |            |
 | account_id |     integer      |         |  NOT NULL - REF(account)   |            |
 | folder_id  |     integer      |         |        REF(folder)         |            |

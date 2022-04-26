@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=nattux
+
+init 2022-04-26T13:54:59Z Natto-PKP <wmainvielle@gmail.com> # create tables
+basic-views 2022-04-26T15:02:26Z Natto-PKP <wmainvielle@gmail.com> # create firsts views

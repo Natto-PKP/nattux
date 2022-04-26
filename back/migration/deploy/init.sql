@@ -10,7 +10,7 @@ CREATE DOMAIN name_text AS text CHECK (
 CREATE TABLE "account" (
   "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "pseudo" NAME_TEXT NOT NULL,
-  "discriminator" INTEGER NOT NULL CHECK ( "discriminator" >= 1000 AND "discriminator" <= 9999 ),
+  "discriminator" TEXT NOT NULL CHECK ( "discriminator" ~ '^\d{4}$' ),
   "password" TEXT NOT NULL,
   "avatar" TEXT
 );

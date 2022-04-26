@@ -1,16 +1,16 @@
 # Endpoints
 
-## /accounts
+## /users
 
 | method |    route     |     details      | security |
 | :----: | :----------: | :--------------: | :------: |
 | DELETE | /{accountId} |                  |   true   |
 |  GET   |      /       |  Get with token  |   true   |
-|  GET   |    /token    | Get access token |  false   |
 | PATCH  | /{accountId} |                  |   true   |
+|  POST  |    /token    | Get access token |  false   |
 |  POST  |      /       |                  |  false   |
 
-## /files
+### /files
 
 | method |   route   | details | security |
 | :----: | :-------: | :-----: | :------: |
@@ -20,7 +20,7 @@
 | PATCH  | /{fileId} |         |   true   |
 |  POST  |     /     |         |   true   |
 
-## /folders
+### /folders
 
 | method |           route            | details | security |
 | :----: | :------------------------: | :-----: | :------: |
@@ -32,7 +32,7 @@
 |  POST  |             /              |         |   true   |
 |  POST  |     /{folderId}/files      |         |   true   |
 
-## /favorites
+### /favorites
 
 | method |       route       | details | security |
 | :----: | :---------------: | :-----: | :------: |
@@ -40,7 +40,7 @@
 | DELETE | /folders/{itemId} |         |   true   |
 |  POST  |         /         |         |   true   |
 
-## /desks
+### /desks
 
 | method |    route     | details | security |
 | :----: | :----------: | :-----: | :------: |

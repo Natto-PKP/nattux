@@ -10,7 +10,7 @@
 
 ## 26 avril 2022
 
-- Multiple mise à jour du MCD - version 4
+- Multiple mise à jour du MCD - version 5
 - Léger avancement de la structure du code
 - Utilisation de sqitch
 - Création de la base de données
@@ -19,3 +19,5 @@
 - Mise à jour du fichier endpoints.md
 - Création du fichier tables.md et journal.md
 - Création des functions utilitaires des tables
+- Mise en place de la route users
+- Mise en place du système de token

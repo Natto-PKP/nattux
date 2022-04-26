@@ -2,6 +2,6 @@
 
 BEGIN;
 
--- XXX Add DDLs here.
+DROP VIEW "desk_view", "folder_view", "file_view";
 
 COMMIT;

@@ -4,14 +4,15 @@ BEGIN;
 
 -- account
 CREATE FUNCTION create_account (json) RETURNS account AS $$
-  INSERT INTO "account" ("pseudo", "discriminator", "password") VALUES (
-    $1->>'pseudo', $1->>'discriminator', $1->>'password'
+  INSERT INTO "account" ("pseudo", "discriminator", "email", "password") VALUES (
+    $1->>'pseudo', $1->>'discriminator', $1->>'email', $1->>'password'
   ) RETURNING *;
 $$ LANGUAGE SQL STRICT;
 
 CREATE FUNCTION update_account (json, integer) RETURNS account AS $$
   UPDATE "account" SET
     "pseudo" = COALESCE($1->>'pseudo', "pseudo"),
+    "email" = COALESCE($1->>'email', "email"),
     "password" = COALESCE($1->>'password', "password"),
     "avatar" = CASE 
       WHEN $1->>'avatar' = 'deleted' 

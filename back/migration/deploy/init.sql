@@ -11,6 +11,7 @@ CREATE TABLE "account" (
   "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "pseudo" NAME_TEXT NOT NULL,
   "discriminator" TEXT NOT NULL CHECK ( "discriminator" ~ '^\d{4}$' ),
+  "email" TEXT NOT NULL UNIQUE,
   "password" TEXT NOT NULL,
   "avatar" TEXT,
   UNIQUE ("pseudo", "discriminator")

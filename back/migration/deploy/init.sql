@@ -1,0 +1,47 @@
+-- Deploy nattux:init to pg
+
+BEGIN;
+
+CREATE DOMAIN name_text AS text CHECK (
+  VALUE ~ '^[\w\-\.]*$' AND LENGTH(VALUE) >= 2 AND LENGTH(VALUE) <= 32
+);
+
+-- account
+CREATE TABLE "account" (
+  "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  "pseudo" NAME_TEXT NOT NULL,
+  "discriminator" INTEGER NOT NULL CHECK ( "discriminator" >= 1000 AND "discriminator" <= 9999 ),
+  "password" TEXT NOT NULL,
+  "avatar" TEXT
+);
+
+-- desk
+CREATE TABLE "desk" (
+  "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  "background" TEXT,
+  "theme" TEXT,
+  "color" TEXT CHECK ( LENGTH("color") = 7 AND "color" ~ '^#[0-9a-fA-F]{6}$' ),
+  "account_id" INTEGER NOT NULL UNIQUE REFERENCES "account"("id") ON DELETE CASCADE
+);
+
+-- folder
+CREATE TABLE "folder" (
+  "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  "name" NAME_TEXT NOT NULL,
+  "icon" TEXT,
+  "favorite" BOOLEAN NOT NULL DEFAULT false,
+  "account_id" INTEGER NOT NULL REFERENCES "account"("id") ON DELETE CASCADE,
+  "folder_id" INTEGER REFERENCES "folder"("id") ON DELETE CASCADE
+);
+
+-- file
+CREATE TABLE "file" (
+  "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  "name" NAME_TEXT NOT NULL,
+  "type" TEXT NOT NULL DEFAULT 'text' CHECK ( "type" ~ '(text|png|jpg|gif|markdown)' ),
+  "content" TEXT,
+  "account_id" INTEGER NOT NULL REFERENCES "account"("id") ON DELETE CASCADE,
+  "folder_id" INTEGER REFERENCES "folder"("id") ON DELETE CASCADE
+);
+
+COMMIT;

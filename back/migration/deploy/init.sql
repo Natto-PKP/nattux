@@ -12,7 +12,8 @@ CREATE TABLE "account" (
   "pseudo" NAME_TEXT NOT NULL,
   "discriminator" TEXT NOT NULL CHECK ( "discriminator" ~ '^\d{4}$' ),
   "password" TEXT NOT NULL,
-  "avatar" TEXT
+  "avatar" TEXT,
+  UNIQUE ("pseudo", "discriminator")
 );
 
 -- desk

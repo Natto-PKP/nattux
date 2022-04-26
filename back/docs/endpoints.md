@@ -5,10 +5,10 @@
 | method |    route     |     details      | security |
 | :----: | :----------: | :--------------: | :------: |
 | DELETE | /{accountId} |                  |   true   |
-|  GET   | /{accountId} |                  |   true   |
+|  GET   |      /       |  Get with token  |   true   |
 |  GET   |    /token    | Get access token |  false   |
 | PATCH  | /{accountId} |                  |   true   |
-|  POST  |      /       |                  |          |
+|  POST  |      /       |                  |  false   |
 
 ## /files
 
@@ -34,7 +34,17 @@
 
 ## /favorites
 
-| method |   route   | details | security |
-| :----: | :-------: | :-----: | :------: |
-| DELETE | /{itemId} |         |   true   |
-|  POST  |     /     |         |   true   |
+| method |       route       | details | security |
+| :----: | :---------------: | :-----: | :------: |
+| DELETE |  /files/{itemId}  |         |   true   |
+| DELETE | /folders/{itemId} |         |   true   |
+|  POST  |         /         |         |   true   |
+
+## /desks
+
+| method |    route     | details | security |
+| :----: | :----------: | :-----: | :------: |
+| DELETE | /{accountId} |         |   true   |
+|  GET   | /{accountId} |         |   true   |
+| PATCH  | /{accountId} |         |   true   |
+|  POST  |      /       |         |   true   |

@@ -4,4 +4,5 @@ export default {
   preset: 'ts-jest',
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'd.ts'],
   verbose: true,
+  transform: { '^.+\\.tsx?$': 'ts-jest/legacy' },
 };

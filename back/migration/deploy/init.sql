@@ -3,7 +3,7 @@
 BEGIN;
 
 CREATE DOMAIN name_text AS text CHECK (
-  VALUE ~ '^[\w\-\.]*$' AND LENGTH(VALUE) >= 2 AND LENGTH(VALUE) <= 32
+  VALUE ~ '^[\w\-.0-9]*$' AND LENGTH(VALUE) >= 2 AND LENGTH(VALUE) <= 32
 );
 
 -- account

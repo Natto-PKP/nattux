@@ -21,3 +21,12 @@
 - Création des functions utilitaires des tables
 - Mise en place de la route users
 - Mise en place du système de token
+
+## 27 avril 2022
+
+- Middleware pour checker les schemas joi
+- Middleware pour gérer les erreurs
+- Route users finie
+- Début des tests unitaires sur la route users
+
+## 28 avril 2022

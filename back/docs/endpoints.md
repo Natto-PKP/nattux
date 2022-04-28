@@ -5,7 +5,7 @@
 | method |    route     |     details      | security |
 | :----: | :----------: | :--------------: | :------: |
 | DELETE | /{accountId} |                  |   true   |
-|  GET   |      /       |  Get with token  |   true   |
+|  GET   | /{accountId} |  Get with token  |   true   |
 | PATCH  | /{accountId} |                  |   true   |
 |  POST  |    /token    | Get access token |  false   |
 |  POST  |      /       |                  |  false   |

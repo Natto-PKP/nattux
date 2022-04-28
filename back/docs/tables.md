@@ -7,6 +7,7 @@
 |      id       |     integer      |         | PRIMARY - GENERATED ALWAYS |          |
 |    pseudo     | text (name_text) |         |          NOT NULL          |          |
 | discriminator |       text       |         |          NOT NULL          |   7047   |
+|     email     |       text       |         |     NOT NULL - UNIQUE      |          |
 |   password    |       text       |         |          NOT NULL          |          |
 |    avatar     |       text       |         |                            |          |
 

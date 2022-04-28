@@ -2,7 +2,7 @@ export interface Account {
   id: number
   pseudo: string
   discriminator: string
-  password: string
+  password: string | null
   avatar: string | null
 }
 

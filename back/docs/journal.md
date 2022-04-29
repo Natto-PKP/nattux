@@ -26,7 +26,17 @@
 
 - Middleware pour checker les schemas joi
 - Middleware pour gérer les erreurs
-- Route users finie
+- Début de la mise en place de la route users
 - Début des tests unitaires sur la route users
 
 ## 28 avril 2022
+
+- Middleware d'authentification
+- Middleware de validation des schemas
+- Mise en place de la route users
+- Test unitaire de la route users
+
+## 29 avril 2022
+
+- Mise en place de la route desks
+- Test unitaire de la route desks

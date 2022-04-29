@@ -10,6 +10,15 @@
 |  POST  |    /token    | Get access token |  false   |
 |  POST  |      /       |                  |  false   |
 
+### /desks
+
+| method |    route     | details | security |
+| :----: | :----------: | :-----: | :------: |
+| DELETE | /{accountId} |         |   true   |
+|  GET   | /{accountId} |         |   true   |
+| PATCH  | /{accountId} |         |   true   |
+|  POST  |      /       |         |   true   |
+
 ### /files
 
 | method |   route   | details | security |
@@ -39,12 +48,3 @@
 | DELETE |  /files/{itemId}  |         |   true   |
 | DELETE | /folders/{itemId} |         |   true   |
 |  POST  |         /         |         |   true   |
-
-### /desks
-
-| method |    route     | details | security |
-| :----: | :----------: | :-----: | :------: |
-| DELETE | /{accountId} |         |   true   |
-|  GET   | /{accountId} |         |   true   |
-| PATCH  | /{accountId} |         |   true   |
-|  POST  |      /       |         |   true   |

@@ -13,6 +13,7 @@ export default (req: Request, _res: Response, next: NextFunction) => {
   if (typeof decoded !== 'object') throw new APIError('auth is failed', 401);
   if (typeof decoded.id !== 'number') throw new APIError('auth is failed', 401);
   if (typeof decoded.ms !== 'number') throw new APIError('auth is failed', 401);
+
   if (req.params.userId && req.params.userId !== `${decoded.id}`) throw new APIError('id does not match with token', 401);
 
   next();

@@ -3,6 +3,7 @@ import multer from 'multer';
 
 import desks from './users/desks';
 import files from './users/files';
+import folders from './users/folders';
 
 import controllers from '../controllers/users';
 import schemas from '../schemas/users';
@@ -14,8 +15,10 @@ import validate from '../middlewares/validate';
 const router = Router({ mergeParams: true });
 const upload = multer();
 
-router.use('/:userId/desks', desks);
-router.use('/:userId/files', files);
+router.use('/:userId(\\d+)/desks', desks);
+router.use('/:userId(\\d+)/files', files);
+router.use('/:userId(\\d+)/folders', folders);
+router.use('/:userId(\\d+)/favorites');
 
 router.delete('/:userId(\\d+)', auth, upload.none(), async(controllers.deleteOne));
 router.get('/:userId(\\d+)', auth, upload.none(), async(controllers.getOne));

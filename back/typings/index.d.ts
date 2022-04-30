@@ -11,7 +11,7 @@ export interface Desk {
   background: string | null
   theme: string
   color: string | null
-  accountId: number
+  userId: number
 }
 
 export interface Folder {
@@ -19,7 +19,7 @@ export interface Folder {
   name: string
   icon: string
   favorite: boolean
-  accountId: number
+  userId: number
   folderId: number | null
 }
 
@@ -29,6 +29,6 @@ export interface File {
   type: string
   content: string | null
   favorite: boolean
-  accountId: number
+  userId: number
   folderId: number | null
 }

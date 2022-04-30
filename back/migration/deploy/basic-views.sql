@@ -8,7 +8,7 @@ CREATE VIEW "desk_view" AS
     "background",
     "theme",
     "color",
-    "account_id" AS "accountId"
+    "account_id" AS "userId"
   FROM "desk";
 
 CREATE VIEW "folder_view" AS 
@@ -17,7 +17,7 @@ CREATE VIEW "folder_view" AS
     "name",
     "icon",
     "favorite",
-    "account_id" AS "accountId",
+    "account_id" AS "userId",
     "folder_id" AS "folderId"
   FROM "folder";
 
@@ -27,7 +27,7 @@ CREATE VIEW "file_view" AS
     "name",
     "type",
     "content",
-    "account_id" AS "accountId",
+    "account_id" AS "userId",
     "folder_id" AS "folderId"
   FROM "file";
 

@@ -72,7 +72,7 @@ $$ LANGUAGE SQL STRICT;
 CREATE FUNCTION create_file (json, integer) RETURNS file_view AS $$
   INSERT INTO "file" ("name", "type", "content", "folder_id", "account_id") VALUES (
     $1->>'name', $1->>'type', $1->>'content', ($1->>'folderId')::integer, $2
-  ) RETURNING "id", "name", "type", "content", "folder_id" AS "folderId", "account_id" AS "userId";
+  ) RETURNING "id", "name", "type", "content", "account_id" AS "userId", "folder_id" AS "folderId";
 $$ LANGUAGE SQL STRICT;
 
 CREATE FUNCTION update_file (json, integer, integer) RETURNS file_view AS $$
@@ -87,7 +87,7 @@ CREATE FUNCTION update_file (json, integer, integer) RETURNS file_view AS $$
         ELSE COALESCE(($1->>'folderId')::integer, "folder_id")
     END
   WHERE "id" = $2 AND "account_id" = $3
-  RETURNING "id", "name", "type", "content", "folder_id" AS "folderId", "account_id" AS "userId";
+  RETURNING "id", "name", "type", "content", "account_id" AS "userId", "folder_id" AS "folderId";
 $$ LANGUAGE SQL STRICT;
 
 COMMIT;

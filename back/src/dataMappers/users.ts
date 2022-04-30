@@ -38,7 +38,7 @@ export default {
   },
 
   updateOne: async (data: unknown, userId: number): Promise<Account> => {
-    const result = await database.query('SELECT * FROM update_account($1, $2)', [data, userId]);
+    const result = await database.query('SELECT * FROM update_account($1) WHERE "id" = $2', [data, userId]);
     return result.rows[0];
   },
 };

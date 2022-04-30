@@ -22,8 +22,8 @@ export default {
     return result.rows[0];
   },
 
-  updateOne: async (data: unknown, deskId: number): Promise<Desk> => {
-    const result = await database.query('SELECT * FROM update_desk($1, $2)', [data, deskId]);
+  updateOne: async (data: unknown, deskId: number, userId: number): Promise<Desk> => {
+    const result = await database.query('SELECT * FROM update_desk($1) WHERE "id" = $2 AND "account_id" = $3', [data, deskId, userId]);
     return result.rows[0];
   },
 };

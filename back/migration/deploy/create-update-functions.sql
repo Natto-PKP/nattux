@@ -9,7 +9,7 @@ CREATE FUNCTION create_account (json) RETURNS account AS $$
   ) RETURNING *;
 $$ LANGUAGE SQL STRICT;
 
-CREATE FUNCTION update_account (json, integer) RETURNS account AS $$
+CREATE FUNCTION update_account (json) RETURNS account AS $$
   UPDATE "account" SET
     "pseudo" = COALESCE($1->>'pseudo', "pseudo"),
     "email" = COALESCE($1->>'email', "email"),
@@ -19,7 +19,6 @@ CREATE FUNCTION update_account (json, integer) RETURNS account AS $$
         THEN NULL 
         ELSE COALESCE($1->>'avatar', "avatar") 
     END
-  WHERE "id" = $2
   RETURNING *;
 $$ LANGUAGE SQL STRICT; 
 
@@ -30,7 +29,7 @@ CREATE FUNCTION create_desk (json, integer) RETURNS desk_view AS $$
   ) RETURNING "id", "background", "theme", "color", "account_id" AS "accountId";
 $$ LANGUAGE SQL STRICT;
 
-CREATE FUNCTION update_desk (json, integer) RETURNS desk_view AS $$
+CREATE FUNCTION update_desk (json) RETURNS desk_view AS $$
   UPDATE "desk" SET
     "background" = CASE
       WHEN $1->>'background' = 'deleted'
@@ -43,7 +42,6 @@ CREATE FUNCTION update_desk (json, integer) RETURNS desk_view AS $$
         THEN NULL
         ELSE COALESCE($1->>'color', "color")
     END
-  WHERE "id" = $2
   RETURNING "id", "background", "theme", "color", "account_id" AS "accountId";
 $$ LANGUAGE SQL STRICT;
 
@@ -54,17 +52,16 @@ CREATE FUNCTION create_folder (json, integer) RETURNS folder_view AS $$
   ) RETURNING "id", "name", "icon", "favorite", "account_id" AS "accountId", "folder_id" AS "folderId";
 $$ LANGUAGE SQL STRICT;
 
-CREATE FUNCTION update_folder (json, integer) RETURNS folder_view AS $$
+CREATE FUNCTION update_folder (json) RETURNS folder_view AS $$
   UPDATE "folder" SET 
     "name" = COALESCE($1->>'name', "name"),
     "icon" = COALESCE($1->>'icon', "icon"),
     "favorite" = COALESCE(($1->>'favorite')::boolean, "favorite"),
     "folder_id" = CASE
-      WHEN ($1->>'folder_id')::integer = 0
+      WHEN ($1->>'folderId')::integer = 0
         THEN NULL
-        ELSE COALESCE(($1->>'folder_id')::integer, "folder_id")
+        ELSE COALESCE(($1->>'folderId')::integer, "folder_id")
     END
-  WHERE "id" = $2
   RETURNING "id", "name", "icon", "favorite", "account_id" AS "accountId", "folder_id" AS "folderId";
 $$ LANGUAGE SQL STRICT;
 
@@ -75,18 +72,17 @@ CREATE FUNCTION create_file (json, integer) RETURNS file_view AS $$
   ) RETURNING "id", "name", "type", "content", "folder_id" AS "folderId", "account_id" AS "accountId";
 $$ LANGUAGE SQL STRICT;
 
-CREATE FUNCTION update_file (json, integer) RETURNS file_view AS $$
+CREATE FUNCTION update_file (json) RETURNS file_view AS $$
   UPDATE "file" SET
     "name" = COALESCE($1->>'name', "name"),
     "type" = COALESCE($1->>'type', "type"),
     "content" = COALESCE($1->>'content', "content"),
     "favorite" = COALESCE(($1->>'favorite')::boolean, "favorite"),
     "folder_id" = CASE
-      WHEN ($1->>'folder_id')::integer = 0
+      WHEN ($1->>'folderId')::integer = 0
         THEN NULL
-        ELSE COALESCE(($1->>'folder_id')::integer, "folder_id")
+        ELSE COALESCE(($1->>'folderId')::integer, "folder_id")
     END
-  WHERE "id" = $2
   RETURNING "id", "name", "type", "content", "folder_id" AS "folderId", "account_id" AS "accountId";
 $$ LANGUAGE SQL STRICT;
 

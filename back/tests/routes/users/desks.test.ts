@@ -38,7 +38,7 @@ describe('post desks', () => {
     expect(typeof body.id).toBe('number');
     expect(typeof body.theme).toBe('string');
     expect(typeof body.color).toBe('string');
-    expect(typeof body.accountId).toBe('number');
+    expect(typeof body.userId).toBe('number');
     expect(body.background).toBeFalsy();
 
     user.deskId = body.id;
@@ -57,7 +57,7 @@ describe('update desks', () => {
     expect(typeof body.id).toBe('number');
     expect(typeof body.theme).toBe('string');
     expect(typeof body.color).toBe('string');
-    expect(typeof body.accountId).toBe('number');
+    expect(typeof body.userId).toBe('number');
     expect(body.background).toBeFalsy();
   });
 });
@@ -72,7 +72,7 @@ describe('get desks', () => {
     expect(typeof body.id).toBe('number');
     expect(typeof body.theme).toBe('string');
     expect(typeof body.color).toBe('string');
-    expect(typeof body.accountId).toBe('number');
+    expect(typeof body.userId).toBe('number');
     expect(body.background).toBeFalsy();
   });
 });

@@ -2,6 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 
 import desks from './users/desks';
+import files from './users/files';
 
 import controllers from '../controllers/users';
 import schemas from '../schemas/users';
@@ -14,6 +15,7 @@ const router = Router({ mergeParams: true });
 const upload = multer();
 
 router.use('/:userId/desks', desks);
+router.use('/:userId/files', files);
 
 router.delete('/:userId(\\d+)', auth, upload.none(), async(controllers.deleteOne));
 router.get('/:userId(\\d+)', auth, upload.none(), async(controllers.getOne));

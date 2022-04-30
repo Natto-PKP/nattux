@@ -10,6 +10,7 @@ export default {
     name: name.required(),
     type: type.required(),
     icon,
+    content: joi.string(),
     folderId,
   }).min(2).max(4).required(),
 
@@ -17,6 +18,7 @@ export default {
     name,
     type,
     icon,
+    content: joi.string(),
     folderId,
   }).min(1).max(5).required(),
 };

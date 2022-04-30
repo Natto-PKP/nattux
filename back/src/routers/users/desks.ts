@@ -2,7 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 
 import controllers from '../../controllers/users/desks';
-import schemas from '../../schemas/desks';
+import schemas from '../../schemas/users/desks';
 
 import async from '../../helpers/async';
 import auth from '../../middlewares/auth';

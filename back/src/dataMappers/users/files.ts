@@ -23,7 +23,7 @@ export default {
   },
 
   updateOne: async (data: unknown, fileId: number, userId: number): Promise<File> => {
-    const result = await database.query('SELECT * FROM update_file($1) WHERE "id" = $2 AND "account_id" = $3', [data, fileId, userId]);
+    const result = await database.query('SELECT * FROM update_file($1, $2, $3)', [data, fileId, userId]);
     return result.rows[0];
   },
 };

@@ -1,6 +1,6 @@
-import database from '../database';
+import database from '../../database';
 
-import type { Desk } from '../../typings';
+import type { Desk } from '../../../typings';
 
 export default {
   createOne: async (data: unknown, userId: number): Promise<Desk> => {

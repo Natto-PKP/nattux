@@ -4,8 +4,8 @@ import bcrypt from 'bcrypt';
 
 import type { Request, Response } from 'express';
 
-import dataMappers from '../dataMappers/desks';
-import APIError from '../errors/APIError';
+import dataMappers from '../../dataMappers/users/desks';
+import APIError from '../../errors/APIError';
 
 export default {
   createOne: async (req: Request, res: Response) => {
@@ -40,7 +40,7 @@ export default {
       writeFileSync(path.join(process.cwd(), `static/desks/backgrounds/${req.body.background}`), req.file.buffer);
     }
 
-    const result = await dataMappers.updateOne(req.body, Number(deskId));
+    const result = await dataMappers.updateOne(req.body, Number(deskId), Number(req.params.userId));
     res.status(200).json(result);
   },
 };

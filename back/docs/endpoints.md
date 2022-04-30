@@ -31,15 +31,15 @@
 
 ### /folders
 
-| method |           route            | details | security |
-| :----: | :------------------------: | :-----: | :------: |
-| DELETE |        /{folderId}         |         |   true   |
-| DELETE | /{folderId}/files/{fileId} |         |   true   |
-|  GET   |        /{folderId}         |         |   true   |
-|  GET   |     /{folderId}/files      |         |   true   |
-| PATCH  |        /{folderId}         |         |   true   |
-|  POST  |             /              |         |   true   |
-|  POST  |     /{folderId}/files      |         |   true   |
+| method |       route       | details | security |
+| :----: | :---------------: | :-----: | :------: |
+| DELETE |    /{folderId}    |         |   true   |
+|  GET   |         /         |         |   true   |
+|  GET   |    /{folderId}    |         |   true   |
+|  GET   | /{folderId}/files |         |   true   |
+| PATCH  |    /{folderId}    |         |   true   |
+|  POST  |         /         |         |   true   |
+|  POST  | /{folderId}/files |         |   true   |
 
 ### /favorites
 

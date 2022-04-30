@@ -18,7 +18,7 @@ export default {
   },
 
   getOneByUserId: async (userId: number): Promise<Desk> => {
-    const result = await database.query('SELECT * FROM "desk_view" WHERE "accountId" = $1', [userId]);
+    const result = await database.query('SELECT * FROM "desk_view" WHERE "userId" = $1', [userId]);
     return result.rows[0];
   },
 

@@ -13,12 +13,12 @@ export default {
   },
 
   getAll: async (userId: number): Promise<File[]> => {
-    const result = await database.query('SELECT * FROM "file_view" WHERE "accountId" = $1', [userId]);
+    const result = await database.query('SELECT * FROM "file_view" WHERE "userId" = $1', [userId]);
     return result.rows;
   },
 
   getOne: async (fileId: number, userId: number): Promise<File> => {
-    const result = await database.query('SELECT * FROM "file_view" WHERE "id" = $1 AND "accountId" = $2', [fileId, userId]);
+    const result = await database.query('SELECT * FROM "file_view" WHERE "id" = $1 AND "userId" = $2', [fileId, userId]);
     return result.rows[0];
   },
 

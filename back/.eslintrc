@@ -25,7 +25,7 @@
       "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module",
-        "project": "tsconfig.json"
+        "project": "tsconfig.jest.json"
       },
       "rules": {
         "jest/no-hooks": ["error", { "allow": ["beforeAll", "afterAll"] }]

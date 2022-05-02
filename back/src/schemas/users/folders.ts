@@ -1,8 +1,8 @@
 import joi from 'joi';
 
 const name = joi.string().pattern(/[\w\-.0-9]*/).min(2).max(32);
-const icon = joi.string().pattern(/default/);
-const type = joi.string().pattern(/text|markdown/);
+const icon = joi.string().pattern(/default/).default('default');
+const type = joi.string().pattern(/text|markdown/).default('text');
 const folderId = joi.number().integer().positive();
 
 export default {

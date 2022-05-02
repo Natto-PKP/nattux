@@ -1,14 +1,17 @@
 import joi from 'joi';
 
+const theme = joi.string().pattern(/default/).default('default');
+const color = joi.string().pattern(/#[0-9a-fA-F]{6}/);
+
 export default {
   createOne: joi.object({
-    theme: joi.string().pattern(/default/).required(),
-    color: joi.string().pattern(/#[0-9a-fA-F]{6}/),
+    theme: theme.required(),
+    color,
   }).min(1).max(2).required(),
 
   updateOne: joi.object({
     background: joi.any(),
-    theme: joi.string().pattern(/default/),
-    color: joi.string().pattern(/#[0-9a-fA-F]{6}/),
+    theme,
+    color,
   }).min(1).max(3).required(),
 };

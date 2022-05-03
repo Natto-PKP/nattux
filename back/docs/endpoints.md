@@ -43,8 +43,9 @@
 
 ### /favorites
 
-| method |       route       | details | security |
-| :----: | :---------------: | :-----: | :------: |
-| DELETE |  /files/{itemId}  |         |   true   |
-| DELETE | /folders/{itemId} |         |   true   |
-|  POST  |         /         |         |   true   |
+| method |        route        | details | security |
+| :----: | :-----------------: | :-----: | :------: |
+|  GET   |       /files        |         |   true   |
+|  GET   |      /folders       |         |   true   |
+|  GET   |   /files/{fileId}   |         |   true   |
+|  GET   | /folders/{folderId} |         |   true   |

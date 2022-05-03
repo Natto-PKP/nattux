@@ -44,4 +44,12 @@
 - Test unitaire de la route files
 - Mise en place de route folders
 
-## 01 mai 2022
+## 02 mai 2022
+
+- Test unitaire de la route folders
+- Début de la mise en place de la route favorites
+
+## 03 mai 2022
+
+- Mise en place de la route favorites
+- Test unitaire de la route favorites

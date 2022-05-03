@@ -26,6 +26,7 @@ CREATE VIEW "file_view" AS
     "id",
     "name",
     "type",
+    "favorite", 
     "content",
     "account_id" AS "userId",
     "folder_id" AS "folderId"

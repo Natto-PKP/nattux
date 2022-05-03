@@ -4,6 +4,7 @@ import multer from 'multer';
 import desks from './users/desks';
 import files from './users/files';
 import folders from './users/folders';
+import favorites from './users/favorites';
 
 import controllers from '../controllers/users';
 import schemas from '../schemas/users';
@@ -18,6 +19,7 @@ const upload = multer();
 router.use('/:userId(\\d+)/desks', desks);
 router.use('/:userId(\\d+)/files', files);
 router.use('/:userId(\\d+)/folders', folders);
+router.use('/:userId(\\d+)/favorites', favorites);
 
 router.delete('/:userId(\\d+)', auth, upload.none(), async(controllers.deleteOne));
 router.get('/:userId(\\d+)', auth, upload.none(), async(controllers.getOne));

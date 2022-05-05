@@ -12,7 +12,7 @@ const server = express();
 server.use(express.urlencoded({ extended: true }));
 server.use(cors());
 
-server.use(routers);
 server.use(express.static(path.join(__dirname, 'static')));
+server.use(routers);
 
 export default server;

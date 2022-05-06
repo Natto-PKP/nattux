@@ -5,7 +5,7 @@
 
   "overrides": [
     {
-      "files": ["src/**/*.ts", "src/**/*.d.ts", "typings/*.d.ts"],
+      "files": ["src/**/*.ts", "src/**/*.d.ts", "typings/**/*.d.ts"],
       "env": { "node": true },
       "plugins": ["@typescript-eslint"],
       "extends": ["airbnb-base", "airbnb-typescript/base"],
@@ -29,7 +29,9 @@
       },
       "rules": {
         "react/jsx-uses-react": "off",
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-no-constructed-context-values": "off"
       }
     }
   ]

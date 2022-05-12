@@ -3,6 +3,19 @@
   padding: 1.5rem 1rem;
 
   .panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .error {
+      padding: 0.4rem;
+      margin: 0.6rem 0.6rem 0;
+      background-color: rgba($color: #f44336, $alpha: 0.45);
+      border-radius: 2px;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
     .switch {
       display: flex;
       justify-content: center;

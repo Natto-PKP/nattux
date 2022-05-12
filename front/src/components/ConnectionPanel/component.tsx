@@ -14,8 +14,8 @@ export default function ConnectionPanel(): ReactElement {
   const { register, handleSubmit } = useForm();
   const user = useContext(UserContext);
 
-  const handleLogin = ({ email, password }: any) => {
-    UserAPIService.register(email, password)
+  const handleLogin = (data: unknown) => {
+    UserAPIService.register(data)
       .then(() => UserAPIService.getOne()).then((response) => {
         user.set(response);
       }).catch((err: Error) => setError(err.message));

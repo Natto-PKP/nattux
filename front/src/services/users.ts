@@ -25,7 +25,7 @@ interface UserCreate {
 
 export default class UserAPIService {
   static async createOne(body: UserCreate): Promise<User> {
-    const { data, status } = await api.post('/users', { body }).catch(({ response }) => response);
+    const { data, status } = await api.post('/users', body).catch(({ response }) => response);
 
     if (status === 400) throw new APIError(data);
     if (status === 500) throw new ConnectError('Server not responding');
@@ -57,11 +57,11 @@ export default class UserAPIService {
     return data;
   }
 
-  static async register(email?: string, password?: string): Promise<void> {
+  static async register(body?: unknown): Promise<void> {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      const { data, status } = await api.post('/users/token', { email, password }).catch(({ response }) => response);
+      const { data, status } = await api.post('/users/token', body).catch(({ response }) => response);
 
       if (status === 400) throw new APIError(data);
       if (status === 500) throw new ConnectError('Server not responding');
@@ -74,7 +74,7 @@ export default class UserAPIService {
   }
 
   static async updateOne(body: UserUpdate, userId = localStorage.getItem('userId')): Promise<User> {
-    const { data, status } = await api.patch(`/users/${userId}`, { body }).catch(({ response }) => response);
+    const { data, status } = await api.patch(`/users/${userId}`, body).catch(({ response }) => response);
 
     if (status === 400) throw new APIError(data);
     if (status === 401) throw new ConnectError('Please reconnect');

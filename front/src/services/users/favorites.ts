@@ -56,7 +56,7 @@ export default class FavoriteAPIService {
     return data;
   }
 
-  static async getOneFavoriteFolder(folderId: number, userId = localStorage.getItem('userId')): Promise<FavoriteFolder> {
+  static async getOneFavoriteFolder(folderId: number, userId = localStorage.getItem('userId')): Promise<FavoriteFile> {
     const { data, status } = await api.get(`/users/${userId}/favorites/folders/${folderId}`).catch(({ response }) => response);
 
     if (status === 400) throw new APIError(data);

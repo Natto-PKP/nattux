@@ -1,10 +1,16 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import type { FC } from 'react';
 
 import { UserContext } from '../contextes/user';
 import UserAPIService, { User } from '../services/users';
-import ConnectionPanel from './ConnectionPanel/component';
 
-export default function App(): ReactElement {
+import LoginPage from './Pages/Login/component';
+import Desktop from './Pages/Desktop/component';
+
+import styles from './app.module.scss';
+
+const App: FC<{}> = function App() {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
@@ -16,11 +22,15 @@ export default function App(): ReactElement {
 
   return (
     <UserContext.Provider value={{ value: user, set: setUser }}>
+      <main id={styles.main}>
+        {/* Desktop page */}
+        {user && <Desktop />}
 
-      {user && <p />}
-
-      {!user && <ConnectionPanel />}
-
+        {/* Login page */}
+        {!user && <LoginPage />}
+      </main>
     </UserContext.Provider>
   );
-}
+};
+
+export default App;
